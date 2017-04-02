@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="jumbotron">
+      <h1>ZenithSociety</h1>
+      <p class="lead">Weekly Events</p>
+  </div>
+</div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-6">
+        <button (click)="getLastWeekEvents()" *ngIf="(hasRole)" class="col-md-offset-3">< previous</button>
+      </div>
+      <div class="col-md-6">
+        <button (click)="getNextWeekEvents()" *ngIf="(hasRole)" class="col-md-offset-3"> next ></button>
+      </div>
+  </div>
+
+  <div class="row">
+    <table class="table" border="1">
+      <ng-template ngFor let-item [ngForOf]="eventsOnHome" let-i="index">
+        <th class="text-center label-info" colspan="2">{{item.date | date: 'EEEE MMMM dd, yyyy'}}</th>
+            <tr *ngFor="let e of item.events">
+                <td>{{e.startDate}} {{e.startTime}} - {{e.endTime}}</td>
+                <td>{{e.activity}}</td>
+            </tr>
+      </ng-template>
+    </table>
+  </div>
+
+</div>
